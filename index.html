@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smoothie Recipes — Fresh, healthy smoothies for every day</title>
+<meta name="description" content="Smoothie Recipes — green smoothies, protein smoothies, smoothie bowls and more, with free smoothie builder and calorie tools.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+
+*{box-sizing:border-box}body{margin:0;background:#ffffff;color:#3d2b4f;font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+.site-header{background:#7b2fbe;border-bottom:3px solid #a855f7;padding:18px 0}
+.brand{color:#ffffff;font-size:28px;font-weight:bold;text-decoration:none}
+.tagline{color:#e9d5ff;margin:4px 0 10px}
+.nav a{color:#ffffff;text-decoration:none;margin-right:18px;font-weight:bold}.nav a:hover{color:#e9d5ff}
+.top-banner{background:linear-gradient(120deg,#7b2fbe,#a855f7 55%,#ec4899);color:#fff;border-radius:12px;padding:36px 28px;margin:24px 0}
+.top-banner h1{margin:0 0 10px;color:#fff}
+.top-banner p{margin:0}
+h1,h2,h3{color:#7b2fbe}
+.tool{background:#faf5ff;border:1px solid #d8b4fe;border-left:5px solid #7b2fbe;border-radius:8px;padding:18px;margin:16px 0}
+.tool h3{margin-top:0}
+label{display:block;margin:8px 0 4px;font-weight:bold}
+input,select{width:100%;max-width:340px;padding:9px;border-radius:6px;border:1px solid #c4b5fd;background:#fff;color:#3d2b4f}
+button{background:#7b2fbe;color:#fff;border:none;padding:10px 18px;border-radius:6px;font-weight:bold;cursor:pointer;margin-top:10px}
+button:hover{background:#9333ea}
+.result{margin-top:12px;padding:10px;background:#fff;border-left:4px solid #7b2fbe;border-radius:4px}
+.scroll-row{display:flex;gap:16px;overflow-x:auto;padding:8px 2px 18px;scroll-snap-type:x mandatory}
+.scroll-card{flex:0 0 240px;scroll-snap-align:start;background:#faf5ff;border:1px solid #d8b4fe;border-radius:10px;padding:12px}
+.scroll-card a{color:#7b2fbe;font-weight:bold;text-decoration:none;font-size:17px}
+.scroll-card p{margin:6px 0 0;font-size:15px}
+.card-img{width:100%;height:auto;border-radius:8px;display:block;margin-bottom:10px}
+.featured-img{width:100%;height:auto;border-radius:8px;margin:12px 0}
+.guide h1{color:#7b2fbe}.lede{font-size:18px}
+.site-footer{background:#7b2fbe;border-top:3px solid #a855f7;padding:20px 0;margin-top:40px;color:#e9d5ff}
+.site-footer a{color:#fff}
+a{color:#7b2fbe}
+table{border-collapse:collapse;width:100%;margin:12px 0}td,th{border:1px solid #d8b4fe;padding:8px;text-align:left}
+.check-list label{font-weight:normal}
+@media(max-width:600px){.brand{font-size:22px}.top-banner{padding:24px 18px}}
+
+</style>
+</head>
+<body>
+<header class="site-header"><div class="wrap"><a class="brand" href="index.html">Smoothie Recipes</a><p class="tagline">Fresh, healthy smoothies for every day</p><nav class="nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></nav></div></header>
+<main class="wrap">
+<section class="top-banner"><h1>Fresh Smoothies, Made in Minutes</h1><p>From green smoothies to protein-packed breakfast blends, find recipes that taste great and are genuinely good for you — plus free tools to build, scale, and plan your smoothies.</p></section>
+<section><h2>Free Smoothie Tools</h2><div class="tool"><h3>Smoothie Builder</h3><p>Tick the ingredients you want and see the estimated calories and protein for one serving.</p>
+<div class="check-list">
+<label><input type="checkbox" class="sb-ing" value="banana" onchange="smoothieBuilder()"> Banana (105 kcal, 1 g protein)</label>
+<label><input type="checkbox" class="sb-ing" value="berries" onchange="smoothieBuilder()"> Mixed berries, 1 cup (70 kcal, 1 g protein)</label>
+<label><input type="checkbox" class="sb-ing" value="spinach" onchange="smoothieBuilder()"> Spinach, 1 cup (7 kcal, 1 g protein)</label>
+<label><input type="checkbox" class="sb-ing" value="milk" onchange="smoothieBuilder()"> Milk, 1 cup (150 kcal, 8 g protein)</label>
+<label><input type="checkbox" class="sb-ing" value="yoghurt" onchange="smoothieBuilder()"> Greek yoghurt, 150 g (100 kcal, 10 g protein)</label>
+<label><input type="checkbox" class="sb-ing" value="oats" onchange="smoothieBuilder()"> Oats, 30 g (117 kcal, 4 g protein)</label>
+<label><input type="checkbox" class="sb-ing" value="pb" onchange="smoothieBuilder()"> Peanut butter, 1 tbsp (95 kcal, 4 g protein)</label>
+<label><input type="checkbox" class="sb-ing" value="protein" onchange="smoothieBuilder()"> Protein powder, 1 scoop (120 kcal, 24 g protein)</label>
+<label><input type="checkbox" class="sb-ing" value="mango" onchange="smoothieBuilder()"> Mango, 1 cup (99 kcal, 1 g protein)</label>
+<label><input type="checkbox" class="sb-ing" value="avocado" onchange="smoothieBuilder()"> Avocado, half (120 kcal, 1 g protein)</label>
+</div><div class="result" id="sbOut">Tick ingredients to build your smoothie.</div></div>
+<div class="tool"><h3>Smoothie Calorie Calculator</h3><p>Pick a base, a fruit, and an add-in to estimate the calories in one glass.</p>
+<label>Base liquid (1 cup)</label><select id="calBase"><option value="150">Milk (150 kcal)</option><option value="100">Oat milk (100 kcal)</option><option value="60">Almond milk, unsweetened (60 kcal)</option><option value="45">Coconut water (45 kcal)</option><option value="0">Water (0 kcal)</option></select>
+<label>Fruit</label><select id="calFruit"><option value="105">Banana (105 kcal)</option><option value="70">Mixed berries (70 kcal)</option><option value="99">Mango (99 kcal)</option><option value="60">Pineapple (60 kcal)</option></select>
+<label>Add-in</label><select id="calAdd"><option value="0">None (0 kcal)</option><option value="95">Peanut butter (95 kcal)</option><option value="117">Oats (117 kcal)</option><option value="100">Greek yoghurt (100 kcal)</option><option value="45">Honey, 1 tsp (45 kcal)</option></select>
+<button onclick="smoothieCalories()">Calculate calories</button><div class="result" id="calOut">Choose your ingredients and press calculate.</div></div>
+<div class="tool"><h3>Protein Smoothie Finder</h3><p>Tell us your goal and get a high-protein smoothie recipe.</p>
+<label>Your goal</label><select id="protGoal"><option value="workout">Post-workout recovery</option><option value="breakfast">Filling breakfast</option><option value="lowcal">High protein, lower calories</option></select>
+<button onclick="proteinFinder()">Find my smoothie</button><div class="result" id="protOut">Choose a goal and press the button.</div></div>
+<div class="tool"><h3>Smoothie Recipe Filter</h3><p>Filter our guides by type.</p>
+<label>Show me</label><select id="smFilter"><option value="all">All recipes</option><option value="fruit">Fruit smoothies</option><option value="green">Green and veggie</option><option value="protein">Protein and workout</option><option value="kids">Family and kids</option></select>
+<button onclick="smoothieFilter()">Filter recipes</button><div class="result" id="smFilterOut">Choose a type and press the button.</div></div>
+<div class="tool"><h3>Smoothie Serving Scaler</h3><p>Scale any smoothie recipe up or down. Enter the recipe's base amounts for 1 serving, then choose how many servings you need.</p>
+<label>Base amount per serving (for example, 200 ml milk)</label><input type="number" id="scBase" value="200" min="1">
+<label>Servings in the recipe</label><input type="number" id="scFrom" value="1" min="1">
+<label>Servings you want</label><input type="number" id="scTo" value="4" min="1">
+<button onclick="smoothieScaler()">Scale recipe</button><div class="result" id="scOut">Enter the amounts and press scale.</div></div></section>
+<section><h2>All Smoothie Recipes</h2><p>Scroll sideways to browse every recipe.</p><div class="scroll-row"><div class="scroll-card"><a href="guides/green-smoothies.html"><img src="images/green-smoothies.jpg" alt="Green Smoothies" class="card-img">Green Smoothies</a><p>How to make green smoothies that actually taste good, the best leafy greens, and easy starter recipes.</p></div><div class="scroll-card"><a href="guides/protein-smoothies.html"><img src="images/protein-smoothies.jpg" alt="Protein Smoothies" class="card-img">Protein Smoothies</a><p>How to build high-protein smoothies that keep you full, with and without protein powder.</p></div><div class="scroll-card"><a href="guides/detox-smoothies.html"><img src="images/detox-smoothies.jpg" alt="Detox Smoothies" class="card-img">Detox Smoothies</a><p>What detox smoothies really do, which ingredients help, and recipes that are light and refreshing.</p></div><div class="scroll-card"><a href="guides/breakfast-smoothies.html"><img src="images/breakfast-smoothies.jpg" alt="Breakfast Smoothies" class="card-img">Breakfast Smoothies</a><p>Filling breakfast smoothie recipes that keep you full until lunch, with oats, protein, and fruit.</p></div><div class="scroll-card"><a href="guides/smoothie-bowls.html"><img src="images/smoothie-bowls.jpg" alt="Smoothie Bowls" class="card-img">Smoothie Bowls</a><p>How to make thick smoothie bowls, the best toppings, and recipes that eat like a meal.</p></div><div class="scroll-card"><a href="guides/common-smoothie-mistakes.html"><img src="images/common-smoothie-mistakes.jpg" alt="Common Smoothie Mistakes" class="card-img">Common Smoothie Mistakes</a><p>The ten most common smoothie mistakes, from too much sugar to the wrong blender order, and how to fix them.</p></div><div class="scroll-card"><a href="guides/berry-smoothies.html"><img src="images/berry-smoothies.jpg" alt="Berry Smoothies" class="card-img">Berry Smoothies</a><p>The best berry smoothie recipes, which berries to use, and why frozen berries work so well.</p></div><div class="scroll-card"><a href="guides/tropical-smoothies.html"><img src="images/tropical-smoothies.jpg" alt="Tropical Smoothies" class="card-img">Tropical Smoothies</a><p>Mango, pineapple, and coconut smoothie recipes that taste like a holiday, plus tips for using frozen fruit.</p></div><div class="scroll-card"><a href="guides/chocolate-smoothies.html"><img src="images/chocolate-smoothies.jpg" alt="Chocolate Smoothies" class="card-img">Chocolate Smoothies</a><p>Healthy chocolate smoothie recipes using cocoa, banana, and peanut butter — dessert flavour without the sugar crash.</p></div><div class="scroll-card"><a href="guides/peanut-butter-smoothies.html"><img src="images/peanut-butter-smoothies.jpg" alt="Peanut Butter Smoothies" class="card-img">Peanut Butter Smoothies</a><p>Creamy peanut butter smoothie recipes, how much peanut butter to use, and lighter swaps.</p></div><div class="scroll-card"><a href="guides/veggie-smoothies.html"><img src="images/veggie-smoothies.jpg" alt="Veggie Smoothies" class="card-img">Veggie Smoothies</a><p>How to make vegetable smoothies that taste good, the best vegetables to blend, and savoury options.</p></div><div class="scroll-card"><a href="guides/low-sugar-smoothies.html"><img src="images/low-sugar-smoothies.jpg" alt="Low-Sugar Smoothies" class="card-img">Low-Sugar Smoothies</a><p>How to make smoothies low in sugar without losing flavour, with berry, green, and veggie recipes.</p></div><div class="scroll-card"><a href="guides/high-fiber-smoothies.html"><img src="images/high-fiber-smoothies.jpg" alt="High-Fiber Smoothies" class="card-img">High-Fiber Smoothies</a><p>How to add fibre to smoothies with oats, chia, flax, and vegetables, and why fibre matters.</p></div><div class="scroll-card"><a href="guides/smoothies-for-kids.html"><img src="images/smoothies-for-kids.jpg" alt="Smoothies for Kids" class="card-img">Smoothies for Kids</a><p>Kid-friendly smoothie recipes, how to hide vegetables, and what to avoid in children&#x27;s smoothies.</p></div><div class="scroll-card"><a href="guides/post-workout-smoothies.html"><img src="images/post-workout-smoothies.jpg" alt="Post-Workout Smoothies" class="card-img">Post-Workout Smoothies</a><p>What to drink after exercise, how much protein and carbs you need, and the best recovery recipes.</p></div><div class="scroll-card"><a href="guides/smoothie-meal-prep.html"><img src="images/smoothie-meal-prep.jpg" alt="Smoothie Meal Prep" class="card-img">Smoothie Meal Prep</a><p>How to prep smoothie packs for the week, freeze them, and blend a fresh smoothie in under a minute.</p></div><div class="scroll-card"><a href="guides/best-blender-guide.html"><img src="images/best-blender-guide.jpg" alt="Best Blender Guide" class="card-img">Best Blender Guide</a><p>How to choose a blender for smoothies, what power you need, and how to look after it.</p></div><div class="scroll-card"><a href="guides/smoothie-ingredients-guide.html"><img src="images/smoothie-ingredients-guide.jpg" alt="Smoothie Ingredients Guide" class="card-img">Smoothie Ingredients Guide</a><p>A guide to smoothie ingredients: bases, fruits, greens, proteins, and extras, and how to combine them.</p></div><div class="scroll-card"><a href="guides/frozen-fruit-guide.html"><img src="images/frozen-fruit-guide.jpg" alt="Frozen Fruit Guide" class="card-img">Frozen Fruit Guide</a><p>Why frozen fruit is great for smoothies, which fruits freeze best, and how to freeze your own.</p></div><div class="scroll-card"><a href="guides/smoothie-toppings.html"><img src="images/smoothie-toppings.jpg" alt="Smoothie Toppings" class="card-img">Smoothie Toppings</a><p>The best smoothie bowl toppings, how much to use, and how to keep toppings from ruining a healthy bowl.</p></div></div></section>
+</main>
+<footer class="site-footer"><div class="wrap"><p>Smoothie Recipes — Fresh, healthy smoothies for every day</p><p><a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="privacy.html">Privacy Policy</a> | <a href="disclaimer.html">Disclaimer</a></p><p>Content on this site is for general information only and is not medical advice.</p></div></footer>
+<script>
+
+var SB_NUTRITION={'banana':[105,1],'berries':[70,1],'spinach':[7,1],'milk':[150,8],'yoghurt':[100,10],'oats':[117,4],'pb':[95,4],'protein':[120,24],'mango':[99,1],'avocado':[120,1]};
+function smoothieBuilder(){var boxes=document.querySelectorAll('.sb-ing');var kcal=0,pro=0,n=0;
+for(var i=0;i<boxes.length;i++){if(boxes[i].checked){var v=SB_NUTRITION[boxes[i].value];kcal+=v[0];pro+=v[1];n++;}}
+if(n===0){document.getElementById('sbOut').textContent='Tick ingredients to build your smoothie.';return;}
+document.getElementById('sbOut').innerHTML='Your smoothie ('+n+' ingredients): <strong>'+kcal+' kcal</strong> and <strong>'+pro+' g protein</strong> per serving. Values are estimates from a small static nutrition table.';}
+function smoothieCalories(){var b=parseFloat(document.getElementById('calBase').value),f=parseFloat(document.getElementById('calFruit').value),a=parseFloat(document.getElementById('calAdd').value);
+var total=b+f+a;
+document.getElementById('calOut').innerHTML='Estimated total: <strong>'+total+' kcal</strong> for one glass ('+b+' base + '+f+' fruit + '+a+' add-in).';}
+function proteinFinder(){var g=document.getElementById('protGoal').value;
+var r={'workout':'<strong>Recovery smoothie — about 30 g protein, 320 kcal</strong><br>Blend 1 scoop protein powder, 1 banana, 150 g Greek yoghurt, 200 ml milk and a handful of ice. Drink within an hour of training.',
+'breakfast':'<strong>Breakfast smoothie — about 22 g protein, 380 kcal</strong><br>Blend 150 g Greek yoghurt, 30 g oats, 1 banana, 1 tablespoon peanut butter and 200 ml milk. It keeps you full until lunch.',
+'lowcal':'<strong>Light protein smoothie — about 26 g protein, 210 kcal</strong><br>Blend 1 scoop protein powder, 1 cup mixed berries, 1 cup spinach and 250 ml unsweetened almond milk. Sweet, filling, and low in calories.'};
+document.getElementById('protOut').innerHTML=r[g];}
+function smoothieFilter(){var f=document.getElementById('smFilter').value;
+var lists={'all':['green-smoothies','protein-smoothies','detox-smoothies','breakfast-smoothies','smoothie-bowls','berry-smoothies','tropical-smoothies','chocolate-smoothies','peanut-butter-smoothies','veggie-smoothies','low-sugar-smoothies','high-fiber-smoothies','smoothies-for-kids','post-workout-smoothies','smoothie-meal-prep','smoothie-toppings'],
+'fruit':['berry-smoothies','tropical-smoothies','chocolate-smoothies','peanut-butter-smoothies','low-sugar-smoothies','smoothie-toppings'],
+'green':['green-smoothies','detox-smoothies','veggie-smoothies','high-fiber-smoothies'],
+'protein':['protein-smoothies','post-workout-smoothies','breakfast-smoothies','smoothie-bowls'],
+'kids':['smoothies-for-kids','breakfast-smoothies','berry-smoothies','smoothie-meal-prep']};
+var names={'green-smoothies':'Green Smoothies','protein-smoothies':'Protein Smoothies','detox-smoothies':'Detox Smoothies','breakfast-smoothies':'Breakfast Smoothies','smoothie-bowls':'Smoothie Bowls','berry-smoothies':'Berry Smoothies','tropical-smoothies':'Tropical Smoothies','chocolate-smoothies':'Chocolate Smoothies','peanut-butter-smoothies':'Peanut Butter Smoothies','veggie-smoothies':'Veggie Smoothies','low-sugar-smoothies':'Low-Sugar Smoothies','high-fiber-smoothies':'High-Fiber Smoothies','smoothies-for-kids':'Smoothies for Kids','post-workout-smoothies':'Post-Workout Smoothies','smoothie-meal-prep':'Smoothie Meal Prep','smoothie-toppings':'Smoothie Toppings'};
+var html='<strong>Matching guides:</strong><ul>';var arr=lists[f];for(var i=0;i<arr.length;i++){html+='<li><a href="guides/'+arr[i]+'.html">'+names[arr[i]]+'</a></li>';}html+='</ul>';
+document.getElementById('smFilterOut').innerHTML=html;}
+function smoothieScaler(){var base=parseFloat(document.getElementById('scBase').value),from=parseFloat(document.getElementById('scFrom').value),to=parseFloat(document.getElementById('scTo').value);
+if(!base||!from||!to||from<=0||to<=0){document.getElementById('scOut').textContent='Please enter valid numbers.';return;}
+var scaled=base*to/from;
+document.getElementById('scOut').innerHTML='For <strong>'+to+' servings</strong> you need <strong>'+scaled+' units</strong> of each ingredient (base '+base+' x '+to+' / '+from+'). Scale every ingredient in the recipe by the same factor.';}
+
+</script>
+</body>
+</html>
